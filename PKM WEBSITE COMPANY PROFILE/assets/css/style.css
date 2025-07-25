@@ -1,0 +1,342 @@
+
+        /* CSS Styles */
+        :root {
+            --primary: #003366;
+            --secondary: #FF6600;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --whatsapp: #25D366;
+        }
+       /* CSS Reset Super Ketat */
+    html, body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+    }
+        body {
+            margin: 0 !important;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            padding-top: 70px !important; /* Ruang untuk navbar fixed */
+        }
+
+
+        /* Navbar Fix */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 10px 0 !important;
+            z-index: 1000 !important;
+            transform: none !important;
+        }
+        /* Efek ketika navbar di-scroll */
+        .navbar.scrolled {
+            padding: 5px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(5px);
+        }
+        
+        .navbar-brand img {
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled .navbar-brand img {
+            height: 40px;
+        }
+        
+        .nav-link {
+            position: relative;
+            color: var(--dark);
+            font-weight: 500;
+            margin: 0 10px;
+            padding: 8px 0;
+            transition: all 0.3s ease;
+        }
+        /* Efek underline animasi */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        /* Efek ketika aktif */
+        .navbar .nav-link.active {
+    color: var(--primary) !important;
+    font-weight: 600;
+  
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--primary);
+    transform: scaleX(1);
+}
+        
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            border-color: var(--whatsapp);
+            color:  white;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-whatsapp:hover {
+            background-color: #20bd5a;
+            border-color: #20bd5a;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+         /* Efek ripple pada tombol */
+         .btn-whatsapp::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn-whatsapp:focus:not(:active)::after {
+            animation: ripple 0.6s ease-out;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+        /* Toggler icon animasi */
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: none;
+            position: relative;
+            width: 24px;
+            height: 2px;
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: "";
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background-color: var(--primary);
+            left: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar-toggler-icon::before {
+            transform: translateY(-8px);
+        }
+        
+        .navbar-toggler-icon::after {
+            transform: translateY(8px);
+        }
+        
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+            background-color: transparent;
+        }
+        
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+            transform: rotate(45deg);
+        }
+        
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+            transform: rotate(-45deg);
+        }
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px !important; /* Adjusted padding */
+            margin-top: -70px !important; /* Kompensasi untuk navbar fixed */
+        }
+
+        /* Section Spacing */
+        section[id] {
+            scroll-margin-top: 100px;
+}
+        
+        /* Gaya Produk */
+        .product-card {
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-img-container {
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light);
+            padding: 20px;
+            position: relative;
+        }
+        
+        .product-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+            mix-blend-mode: multiply;
+        }
+        
+        .product-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 51, 102, 0.9);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .product-img-container:hover .product-overlay {
+            transform: translateY(0);
+        }
+        
+        .product-img-container:hover .product-img {
+            transform: scale(1.1);
+        }
+        
+        footer {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Gaya untuk informasi kontak */
+.contact-info {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.contact-item {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact-icon {
+    font-size: 24px;
+    color: var(--primary);
+    margin-right: 15px;
+    min-width: 30px;
+    text-align: center;
+}
+
+.contact-content h5 {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--dark);
+}
+
+.contact-content p {
+    margin-bottom: 0;
+    color: #495057;
+}
+        
+        /* Animasi */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .product-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+}
+
+        #contact {
+    position: relative;
+    z-index: 1;
+    scroll-margin-top: 80px; /* Kompensasi untuk navbar fixed */
+}
